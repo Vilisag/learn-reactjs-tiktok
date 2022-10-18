@@ -1,15 +1,15 @@
-import Container from "./Container"
-import { ThemeProvider } from "./ThemeContext"
-import "./App.css"
+import Container from './Container';
+import { ThemeProvider } from './ThemeContext';
+import './App.css';
 
 function Content() {
-    return (
-        <ThemeProvider>
-            <div style={{padding: 20}}>
-                <Container />
-            </div>
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider>
+      <div style={{ padding: 20 }}>
+        <Container />
+      </div>
+    </ThemeProvider>
+  );
 }
 
-export default Content
+export default Content;

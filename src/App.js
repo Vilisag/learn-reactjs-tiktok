@@ -1,33 +1,33 @@
-import {Routes, Route, Link} from 'react-router-dom'
-import GlobalStyles from "./components/GlobalStyles"
-import {HomePage, NewsPage, ContactPage} from './pages'
+import { Fragment } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { DefaultLayout } from './components/Layouts';
+import { publicRoutes } from './routes';
 
 function App() {
   return (
-    <GlobalStyles>
-      <div className="app">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/news">News</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </nav>
-
+    <BrowserRouter>
+      <div className="App">
         <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/news' element={<NewsPage />} />
-          <Route path='/contact' element={<ContactPage />} />
+          {publicRoutes.map((route, index) => {
+            const Page = route.component;
+            const Layout = route.layout === null ? Fragment : (route.layout || DefaultLayout);
+            
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
         </Routes>
       </div>
-    </GlobalStyles>
-    )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

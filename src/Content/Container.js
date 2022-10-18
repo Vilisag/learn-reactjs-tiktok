@@ -1,9 +1,7 @@
-import Paragraph from "./Paragraph"
+import Paragraph from './Paragraph';
 
 function Container() {
-    return (
-        <Paragraph />
-    )
+  return <Paragraph />;
 }
 
-export default Container
+export default Container;
